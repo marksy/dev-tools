@@ -1,0 +1,23 @@
+#dev-tools {
+	background: rgba(51,53,44,.95);
+	border-bottom: 1px solid rgba(255,255,255,.2);
+	color: rgba(228,223,112,1);
+	display: none;
+	font-family: 'Courier', monospace;
+	font-size: 1.4em;
+	padding: 12px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+}
+#dev-tools .alt-color {
+	color: rgba(113,216,239,1);
+}
+#dev-tools.switch {
+	top: auto;
+	bottom: 0;
+	border-top: 1px solid rgba(255,255,255,.2);
+	border-bottom: none;
+}
