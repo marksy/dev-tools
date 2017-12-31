@@ -1,24 +1,21 @@
-//set the variables
-var viewportX = $(window).width();
-var viewportY = $(window).height();
-var docY = $(document).height();
- 
-//create the element
-$('body').append('<div id=\"dev-tools\"></div>');
- 
-//put the variable into the element
-$('#dev-tools').css('display', 'block').html('<span class="alt-color">width:</span>' + viewportX + 'px <span class="alt-color">height:</span>' + viewportY + 'px <span class="alt-color">docHeight:</span> ' + docY + 'px');
- 
-//run again on resize
-$(window).resize(function () {
-    var viewportX = $(window).width();
-    var viewportY = $(window).height();
-    var docY = $(document).height();
-    $('#dev-tools').css('display', 'block').html('<span class="alt-color">width:</span>' + viewportX + 'px <span class="alt-color">height:</span>' + viewportY + 'px <span class="alt-color">docHeight:</span> ' + docY + 'px');
-});
+let viewportX = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+let viewportY = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+let docY;
+let div = document.createElement('div');
 
-//on mouse hover, switch position (from top to bottom or vice-versa)
-$('#dev-tools').hover(function () {
-    $(this).toggleClass('switch');
-    }, function () {
-});
+div.setAttribute('id', 'dev-tools');
+document.body.appendChild(div);
+div.classList.add('show');
+div.onmouseover = function(){
+  div.classList.toggle('switch');
+};
+
+window.addEventListener('resize', init);
+
+function init() {
+    viewportX = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    viewportY = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    div.innerHTML = '<span class="alt-color">width:</span>' + viewportX + 'px <span class="alt-color">height:</span>' + viewportY + 'px';
+};
+
+init();
